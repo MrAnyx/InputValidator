@@ -76,9 +76,18 @@ class InputValidatorHelper {
       }
    }
 
-
-   public static function isLessThan(): array {
-      
+   /**
+    * Verify if the param is a valid int
+    *
+    * @param mixed $element
+    * @return array
+    */
+   public static function isValidInt($element): array {
+      if(is_numeric($element)){
+         return self::returnType($validity = true, $message = null);
+      } else {
+         return self::returnType($validity = false, $message = "$element is not a valid integer", $additionalParams = ["param" => $element]);
+      }
    }
 
 
