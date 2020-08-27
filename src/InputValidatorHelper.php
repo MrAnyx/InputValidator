@@ -15,7 +15,7 @@ class InputValidatorHelper {
     * @param array|null $additionalParams
     * @return array
     */
-   public static function returnType(bool $validity, ?string $message = null, ?array $additionalParams = []): array {
+   private static function returnType(bool $validity, ?string $message = null, ?array $additionalParams = []): array {
       $type = [
          "validity" => $validity,
          "message" => $message
@@ -44,5 +44,42 @@ class InputValidatorHelper {
          return self::returnType($validity = false, $message = "Invalid email", $additionalParams = ["length" => $length, "error" => "Email must be less than $length"]);
       }
    }
+
+
+   /**
+    * Verify if a string is in an array
+    *
+    * @param string $text
+    * @param array $array
+    * @return array
+    */
+   public static function isStringInArray(string $text, array $array): array {
+      if(in_array($text, $array)) {
+         return self::returnType($validity = true, $message = null);
+      } else {
+         return self::returnType($validity = false, $message = "$text is not in the array", $additionalParams = ["text" => $text, "array" => $array]);
+      }
+   }
+
+   /**
+    * Verify if a string correspond to a regex
+    *
+    * @param string $text
+    * @param string $regex
+    * @return array
+    */
+   public static function isRegexValid(string $text, string $regex): array {
+      if(preg_match($regex, $text)){
+         return self::returnType($validity = true, $message = null);
+      } else {
+         return self::returnType($validity = false, $message = "$text does not correspond to the regex($regex)", $additionalParams = ["text" => $text, "regex" => $regex]);
+      }
+   }
+
+
+   public static function isLessThan(): array {
+      
+   }
+
 
 }

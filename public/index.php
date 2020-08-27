@@ -4,10 +4,9 @@ use Validator\InputValidatorHelper;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$validEmail = "bonjour@gmail.com";
-$invalidEmail = "bonjour@gmail";
 
-$result = InputValidatorHelper::isEmailValid("toto@icohup", 20);
-
+// $result = InputValidatorHelper::isEmailValid("toto@icohup", 20);
+// $result = InputValidatorHelper::isStringInArray("test", ["test", "aujourdhui", "salut", "hier"]);
+// $result = InputValidatorHelper::isRegexValid("bonjoure", "(^bonjour$|^aujourdhui$)");
 
 dd($result);
