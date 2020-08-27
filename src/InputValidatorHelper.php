@@ -20,10 +20,21 @@ class InputValidatorHelper {
          "validity" => $validity,
          "message" => $message
       ];
-      foreach ($additionalParams as $key => $value) {
-         $type["additional"][$key] = $value;
-      }
+      foreach ($additionalParams as $key => $value) $type["additional"][$key] = $value;
       return $type;
+   }
+
+   /**
+    * Return an array containing the name of the parameters
+    *
+    * @param string $functionName
+    * @return array
+    */
+   private static function getFunctionArgsName(string $functionName): array {
+      $f = new ReflectionFunction($funcName);
+      $result = [];
+      foreach ($f->getParameters() as $param) $result[] = $param->name;
+      return $result;
    }
 
    /**
@@ -88,6 +99,17 @@ class InputValidatorHelper {
       } else {
          return self::returnType($validity = false, $message = "$element is not a valid integer", $additionalParams = ["param" => $element]);
       }
+   }
+
+   /**
+    * Verify if the length of a string is valid
+    *
+    * @param string $text
+    * @param integer $length
+    * @return array
+    */
+   public static function isStringLengthValid(string $text, ?int $min = null, ?int $max = null): array {
+      return self::returnType($validity = true, $message = null, $additionalParams = ["params" => get_defined_vars()]);
    }
 
 
