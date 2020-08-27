@@ -1,0 +1,13 @@
+{
+    "name": "pcicohup/validator-input",
+    "description": "Input validator",
+    "license": "proprietary",
+    "require": {
+        "symfony/var-dumper": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Validator\\": "src/"
+        }
+    }
+}
