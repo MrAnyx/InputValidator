@@ -1,7 +1,7 @@
 {
-    "name": "pcicohup/validator-input",
+    "name": "mranyx/validator-input",
     "description": "Input validator",
-    "license": "proprietary",
+    "license": "MIT",
     "require": {
         "symfony/var-dumper": "^5.1"
     },
