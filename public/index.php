@@ -9,4 +9,5 @@ $invalidEmail = "bonjour@gmail";
 
 $result = InputValidatorHelper::isEmailValid("toto@icohup", 20);
 
+
 dd($result);
